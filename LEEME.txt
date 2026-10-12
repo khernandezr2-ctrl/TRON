@@ -1,0 +1,19 @@
+NEON PEDAL - Paso 2: niveles jugables
+Abre Index.html con doble clic (Chrome, Edge o Firefox). No necesita internet.
+
+CONTROLES
+- ESPACIO / flecha arriba / W / clic / toque en pantalla: saltar (mantén para repetir el salto).
+- ESC: volver al menú.
+
+QUÉ HAY
+- Nivel 01 NEON CITY (hecho a mano), Nivel 02 CYBER RUSH y Nivel 03 GRID APOCALYPSE (generados con semilla).
+- Obstáculos: picos (pirámides rosas) y bloques (puedes aterrizar encima; chocar de lado = fallo).
+- Al chocar: % de avance en rojo, explosión de partículas y pantalla GAME OVER (REINTENTAR / MENÚ).
+- Al llegar al 100%: pantalla de nivel completado. La mejor marca de cada nivel se guarda en el navegador.
+
+ARCHIVOS
+- js/Levels.js : física + diseño de niveles (sin dependencias; también corre con Node para probar).
+- js/Game.js   : menú + render 3D del juego + HUD + paneles.
+Para editar el nivel 1: cambia la lista "cmds" en js/Levels.js
+  número = espacio vacío | ["S",n] = n picos | ["B",ancho,alto] = bloque | ["K",ancho,alto,off...] = bloque con picos encima.
+Probar que un nivel se puede pasar:  node -e "var N=require('./js/Levels.js');console.log(N.Sim.runBot(N.Levels[0]))"

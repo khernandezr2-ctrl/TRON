@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#02050c">
+    <title>NEON PEDAL | Enter the Grid</title>
+    <link rel="stylesheet" href="css/Style.css">
+</head>
+<body class="in-menu">
+
+    <canvas id="scene"></canvas>
+    <div class="vignette"></div>
+    <div class="menu-shade"></div>
+
+    <div id="loader" class="loader"><span>CARGANDO LA RED…</span></div>
+    <div id="noGL" class="loader" hidden><span>Tu navegador no pudo iniciar WebGL. Prueba con Chrome, Edge o Firefox actualizados.</span></div>
+
+    <!-- ================= MENÚ ================= -->
+    <header class="topbar">
+        <a href="#" class="brand" aria-label="Neon Pedal">
+            <span class="brand-icon"><i>🚲</i></span>
+            <span class="brand-name">TRON<span></span></span>
+        </a>
+        <button class="sound-button" id="soundButton" aria-label="Activar o desactivar sonido">
+            <span id="soundIcon">♪</span>
+            <span id="soundLabel">SONIDO OFF</span>
+        </button>
+    </header>
+
+    <main id="menu" class="hero">
+        <section class="hero-copy">
+            <div class="eyebrow"><span></span>ENTER THE GRID</div>
+            <h1>TRON<br><span class="title-outline">LEGACY</span></h1>
+            <div class="title-line"></div>
+            <p class="description">
+                Pedalea por la red. Salta. No dejes de moverte.<br>
+                Tu estela es tu única huella.
+            </p>
+            <div class="actions">
+                <button class="play-button" id="playButton"><span class="tri"></span><b id="playLabel">INICIAR NIVEL 01</b></button>
+                <button class="secondary-button" id="levelsButton">NIVELES <span>↗</span></button>
+            </div>
+        </section>
+
+        <section class="color-panel" aria-label="Color de la bici">
+            <div class="color-box">
+                <span class="color-label">COLOR</span>
+                <button class="swatch active" data-color="cyan"   data-name="AZUL NEÓN" aria-label="Azul neón"></button>
+                <button class="swatch"        data-color="yellow" data-name="AMARILLO"  aria-label="Amarillo"></button>
+                <button class="swatch"        data-color="red"    data-name="ROJO"      aria-label="Rojo"></button>
+                <span class="color-name" id="colorName">AZUL NEÓN</span>
+            </div>
+            <p class="drag-hint"><i></i>ARRASTRA PARA GIRAR · RUEDA PARA ACERCAR</p>
+        </section>
+    </main>
+
+    <!-- ================= SELECTOR DE NIVELES ================= -->
+    <div id="levelsModal" class="modal" hidden>
+        <div class="modal-card">
+            <div class="modal-head">
+                <span>SELECCIONAR NIVEL</span>
+                <button id="closeModal" aria-label="Cerrar">✕</button>
+            </div>
+            <div class="level-list" id="levelList"></div>
+        </div>
+    </div>
+
+    <!-- ================= JUEGO ================= -->
+    <div id="game" class="game" hidden>
+        <div class="hud">
+            <div>
+                <div class="hud-level" id="hudLevel">NIVEL 01 · NEON CITY</div>
+                <div class="hud-attempt" id="hudAttempt">INTENTO 1</div>
+            </div>
+            <div class="hud-progress">
+                <div class="bar"><i id="barFill"></i></div>
+                <span id="barPct">0%</span>
+            </div>
+            <button class="exit-game" id="exitGame">✕ SALIR</button>
+        </div>
+
+        <div class="crash-pct" id="crashPct" hidden>0%</div>
+
+        <div class="panel" id="panel" hidden>
+            <span class="kicker" id="panelKicker"></span>
+            <h2 id="panelTitle"></h2>
+            <p id="panelText"></p>
+            <div class="panel-row" id="panelRow"></div>
+        </div>
+
+        <div class="keys">
+            <span><kbd>ESPACIO</kbd>/<kbd>↑</kbd>/ TOCAR SALTAR (mantén para repetir)</span>
+            <span><kbd>ESC</kbd> MENÚ</span>
+        </div>
+    </div>
+
+    <div id="toast" class="toast" hidden></div>
+
+    <script src="js/three.min.js"></script>
+    <script src="js/three-post.js"></script>
+    <script src="js/bike-data.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/Levels.js"></script>
+    <script src="js/Game.js"></script>
+</body>
+</html>
